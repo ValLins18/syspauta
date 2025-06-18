@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("api/v1/voto")
@@ -39,6 +40,7 @@ public class VotoController {
         }
         try {
             voto.setSessao(sessao);
+            voto.setDataVoto(LocalDateTime.now());
             votoRepository.save(voto);
             return ResponseEntity.created(new URI(env.getProperty("my.forms.url")+"/index")).build();
         } catch (Exception e) {
