@@ -30,7 +30,7 @@ public class SessaoController {
     }
 
     @PostMapping("/criar-sessao")
-    public ResponseEntity<Pauta> criarSessao(@RequestBody CriarSessaoDto criarSessaoDto) {
+    public ResponseEntity criarSessao(@RequestBody CriarSessaoDto criarSessaoDto) {
         try {
             var pauta = pautaRepository.findById(criarSessaoDto.pautaId());
 
@@ -42,7 +42,7 @@ public class SessaoController {
             return ResponseEntity.notFound().build();
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body("Não foi possivel abrir uma nova sessão para esta pauta, provavelmente ja existe uma sessão aberta para a mesma");
         }
     }
 }
