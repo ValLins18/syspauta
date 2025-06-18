@@ -42,7 +42,8 @@ public class SessaoController {
             return ResponseEntity.notFound().build();
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Não foi possivel abrir uma nova sessão para esta pauta, provavelmente ja existe uma sessão aberta para a mesma");
+            return ResponseEntity.badRequest().body("Não foi possivel abrir uma nova sessão para esta pauta, " +
+                    "provavelmente ja foi aberta uma sessão para a mesma");
         }
     }
 }
