@@ -40,10 +40,10 @@ public class VotoController {
             return ResponseEntity.badRequest().body(Map.of("erro", "O associado com este cpf ja votou nesta pauta!!"));
         }
 
-        //Verifica em uma API externa se o associado está apto para votar
-        if(!validadorCpfService.podeVotar(voto.getCpfAssociado())) {
-            return ResponseEntity.notFound().build();
-        }
+        //Verifica em uma API externa se o associado está apto para votar (Comentado pois o endpoint dos terceiros nao esta funcionando)
+        //if(!validadorCpfService.podeVotar(voto.getCpfAssociado())) {
+        //    return ResponseEntity.notFound().build();
+        //}
 
         var sessao = sessaoRepository.findById(sessaoId).orElseThrow(() -> new RuntimeException("Sessao não encontrada para fazer o voto"));
 
