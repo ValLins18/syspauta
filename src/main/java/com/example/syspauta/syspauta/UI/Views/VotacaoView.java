@@ -10,6 +10,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+/// @author Valdemilson Junior
+///
+/// Tela de formulario onde vai ser computado o voto
 @Component
 public class VotacaoView {
 
@@ -28,7 +31,7 @@ public class VotacaoView {
                         new ItemLayout("INPUT_TEXTO","cpfAssociado","CPF ASSOCIADO", ""),
                         new ItemLayout("INPUT_TEXTO","voto","DIGITE SIM OU NAO", "")
                 ),
-                new BotaoOkLayout("SIM", env.getProperty("my.api.url")+"/votar/"+sessao.getId(), null),
+                new BotaoOkLayout("SIM", env.getProperty("my.api.url")+"/voto/votar/"+sessao.getId(), null),
                 new BotaoCancelarLayout("NÃO", env.getProperty("my.form.url")+"/index"));
     }
 }

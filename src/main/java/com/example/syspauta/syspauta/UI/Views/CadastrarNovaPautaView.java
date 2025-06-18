@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/// @author Valdemilson Junior
+///
+/// Primeira opção do menu da tela {@link IndexView}.
+/// Nesta Tela é feito o cadastro das Pautas
 @Component
 public class CadastrarNovaPautaView {
 
@@ -27,7 +31,7 @@ public class CadastrarNovaPautaView {
                         new ItemLayout("INPUT_TEXTO","descricaoPauta", "Descrição da Pauta", "")),
                 new BotaoOkLayout(
                         "Cadastrar Pauta",
-                        env.getProperty("my.api.url")+"v1/pauta/criar",
+                        env.getProperty("my.api.url")+"/pauta/criar",
                         null),
                 new BotaoCancelarLayout("Voltar", env.getProperty("my.forms.url")+"/index"));
     }

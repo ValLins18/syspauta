@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+/// Terceira opção do menu da tela {@link IndexView}.
+/// Nesta Tela é listadas todas as sessões que estão abertas para voto
 @Component
 public class SessoesAbertasParaVotarView {
 
@@ -35,8 +37,8 @@ public class SessoesAbertasParaVotarView {
 
                 return new ItemLayout(
                         sessao.getPauta().getNome(),
-                        env.getProperty("my.forms.url")+"/votar",
-                        Map.of("sessaoId", sessao.getId())
+                        env.getProperty("my.forms.url")+"/votacao/"+sessao.getId(),
+                        null
                 );
 
         }).toList();

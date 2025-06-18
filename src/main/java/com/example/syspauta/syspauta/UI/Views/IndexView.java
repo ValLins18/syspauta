@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/// @author Valdemilson Junior
+/// Esta é a primeira tela da aplicação
 @Component
 public class IndexView {
 

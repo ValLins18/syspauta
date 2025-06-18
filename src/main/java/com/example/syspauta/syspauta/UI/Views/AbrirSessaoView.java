@@ -10,8 +10,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+/// @author Valdemilson Junior
+///
+/// Segunda opção do menu da tela {@link IndexView}.
+/// Nesta Tela é feita a abertura de sessão de votação das pautas
 @Component
 public class AbrirSessaoView {
 
@@ -22,8 +25,6 @@ public class AbrirSessaoView {
     }
 
     public TelaLayout gerarTelaAbrirSessao(List<Pauta> pautas) {
-
-        //ObjectMapper om = new ObjectMapper();
 
         TelaLayout telaLayout = new TelaLayout(
                 "SELECAO",
@@ -36,7 +37,7 @@ public class AbrirSessaoView {
 
                 return new ItemLayout(
                         pauta.getNome(),
-                        env.getProperty("my.api.url")+"/abrirsessao",
+                        env.getProperty("my.api.url")+"/sessao/abrirsessao",
                         Map.of("pautaId", pauta.getId())
                 );
         }).toList();

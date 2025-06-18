@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/// @author Valdemilson Junior
+///
+/// Tela que mostra resultado individual da sessão encerrada
 @Component
 public class ResultadoView {
 
