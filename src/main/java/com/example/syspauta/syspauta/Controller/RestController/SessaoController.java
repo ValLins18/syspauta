@@ -5,6 +5,8 @@ import com.example.syspauta.syspauta.Model.Pauta;
 import com.example.syspauta.syspauta.Model.Sessao;
 import com.example.syspauta.syspauta.Repository.PautaRepository;
 import com.example.syspauta.syspauta.Repository.SessaoRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("api/v1/sessao")
+@Tag(name = "Sessao", description = "Endpoints para gerenciamento de sessoes")
 public class SessaoController {
 
     private final SessaoRepository sessaoRepository;
@@ -29,6 +32,7 @@ public class SessaoController {
         this.env = env;
     }
 
+    @Operation(summary = "Cria uma nova Sessao", description = "Abre uma nova sessão para votação em um pauta")
     @PostMapping("/criar-sessao")
     public ResponseEntity criarSessao(@RequestBody CriarSessaoDto criarSessaoDto) {
         try {

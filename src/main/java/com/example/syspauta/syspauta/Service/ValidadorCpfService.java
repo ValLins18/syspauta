@@ -13,8 +13,8 @@ public class ValidadorCpfService {
     private final RestTemplate restTemplate;
     private final Environment environment;
 
-    public ValidadorCpfService(RestTemplate restTemplate, Environment environment) {
-        this.restTemplate = restTemplate;
+    public ValidadorCpfService(Environment environment) {
+        this.restTemplate = new RestTemplate();
         this.environment = environment;
     }
 

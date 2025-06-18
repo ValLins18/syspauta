@@ -4,6 +4,8 @@ import com.example.syspauta.syspauta.Model.Voto;
 import com.example.syspauta.syspauta.Repository.SessaoRepository;
 import com.example.syspauta.syspauta.Repository.VotoRepository;
 import com.example.syspauta.syspauta.Service.ValidadorCpfService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/voto")
+@Tag(name = "Voto", description = "Endpoints para gerenciamento de votos")
 public class VotoController {
 
     private final SessaoRepository sessaoRepository;
@@ -29,6 +32,7 @@ public class VotoController {
     }
 
     @PostMapping("/votar/{sessaoId}")
+    @Operation(summary = "Vota em uma sessão", description = "Cria um voto para determinada sessao")
     public ResponseEntity<?> votar(@RequestBody Voto voto, @PathVariable Long sessaoId) {
 
         //Verifica se o associado ja votou naquela pauta e sessão
