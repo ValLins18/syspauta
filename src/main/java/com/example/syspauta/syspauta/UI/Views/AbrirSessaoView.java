@@ -37,7 +37,7 @@ public class AbrirSessaoView {
 
                 return new ItemLayout(
                         pauta.getNome(),
-                        env.getProperty("my.api.url")+"/sessao/abrirsessao",
+                        env.getProperty("my.api.url")+"/sessao/criar-sessao",
                         Map.of("pautaId", pauta.getId())
                 );
         }).toList();
