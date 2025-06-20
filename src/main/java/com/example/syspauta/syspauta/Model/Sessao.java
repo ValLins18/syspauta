@@ -14,7 +14,7 @@ public class Sessao {
 
     private LocalDateTime dataAberturaSessao;
     private LocalDateTime dataFechamentoSessao;
-    private Integer duracaoMinutos = 10;
+    private Integer duracaoMinutos = 1;
 
     @OneToOne
     private Pauta pauta;
@@ -28,6 +28,14 @@ public class Sessao {
         this.id = id;
         this.dataAberturaSessao = dataAberturaSessao;
         this.dataFechamentoSessao = dataAberturaSessao.plusMinutes(getDuracaoMinutos());
+        this.pauta = pauta;
+        this.votos = votos;
+    }
+
+    public Sessao(Long id, LocalDateTime dataAberturaSessao, Integer duracaoMinutos, Pauta pauta, List<Voto> votos) {
+        this.id = id;
+        this.dataAberturaSessao = dataAberturaSessao;
+        this.duracaoMinutos = duracaoMinutos;
         this.pauta = pauta;
         this.votos = votos;
     }
