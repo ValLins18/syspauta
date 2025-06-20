@@ -1,6 +1,18 @@
 # SysPauta
 
-SysPauta é uma aplicação web para gerenciamento e votação de pautas, desenvolvida em Spring Boot. O sistema permite criar pautas, abrir sessões de votação, registrar votos e consultar resultados, sendo ideal para assembleias, conselhos e organizações que precisam de um processo de votação digital simples, seguro e eficiente.
+O SysPauta foi criado como parte de uma avaliação técnica com foco em construção de APIs RESTful robustas, comunicação com aplicações mobile via JSON dinâmico e integração com serviços externos. Toda a lógica de UI é entregue via backend através de layouts JSON, facilitando o consumo em dispositivos móveis.
+
+---
+
+## :triangular_ruler: Arquitetura da Solução
+
+- Backend 100% desacoplado do frontend mobile
+- Comunicação baseada em layouts JSON (FORMULARIO e SELECAO)
+- API REST com versionamento (ex: /api/v1)
+- Persistência em banco de dados MySQL 8
+- Integração externa com validação de CPF via API (https://user-info.herokuapp.com)
+- Containerização com Docker e Docker Compose
+- Deploy simplificado para cloud via VM ou ambientes gerenciados
 
 ---
 
@@ -10,18 +22,45 @@ SysPauta é uma aplicação web para gerenciamento e votação de pautas, desenv
 - Abertura de sessões de votação
 - Registro de votos
 - Consulta de resultados
-- Interface web para usuários
 - API RESTful documentada
 
 ---
 
 ## :rocket: Tecnologias Utilizadas
 
-- Java 17
+- Java 24
 - Spring Boot
 - Maven
 - Docker
 - Swagger/OpenAPI (documentação da API)
+
+---
+## :memo: Observações Técnicas
+
+- Aplicação segue o padrão Clean Code, com separação clara entre controllers, serviços, modelos e repositórios.
+- Utilizado RestTemplate (ou WebClient, se atualizou) para integrações externas.
+- Possui testes unitários cobrindo o domínio de persistência.
+- Dockerfile multistage para otimizar build da aplicação.
+---
+## :cloud: Deploy em Cloud
+
+A aplicação pode ser facilmente implantada em nuvem utilizando Docker Compose em máquinas virtuais. Exemplo de fluxo:
+
+1. Provisionamento de VM (Google Cloud / AWS / Azure)
+2. Instalação de Docker e Docker Compose
+3. Clone do projeto via Git
+4. Execução de `docker-compose up --build -d`
+
+---
+## :iphone: Fluxo de Telas
+
+- Tela inicial de seleção de funcionalidades
+- Cadastro de nova pauta
+- Abertura de sessão de votação
+- Lista de sessões abertas
+- Votação de pauta
+- Consulta de resultados
+- Visualização detalhada de resultado
 
 ---
 
@@ -58,7 +97,7 @@ src/
 
 1. **Clone o repositório:**
    ```sh
-   git clone <url-do-repositorio>
+   git clone (https://github.com/ValLins18/syspauta.git)
    cd syspauta
    ```
 
@@ -77,24 +116,20 @@ src/
    ```
 
 4. **Acesse:**  
-   [http://localhost:8080](http://localhost:8080)
+   [http://localhost:8080/syspauta/swagger-ui.html](http://localhost:8080/syspauta/swagger-ui.html)
 
 ---
 
-## :whale: Como rodar com Docker
+## :whale: Como rodar localmente com Docker-Compose (certifique-se que o docker e o docker-compose estão instalados)
 
-1. **Build da imagem:**
+1. **Rodando os Containeres:**
    ```sh
-   docker build -t syspauta-app .
+   docker-compose up --build
    ```
-
-2. **Execute o container:**
-   ```sh
-   docker run -p 8080:8080 syspauta-app
-   ```
+Dessa forma o docker ja sobe a aplicação junto com uma instancia do Mysql
 
 3. **Acesse:**  
-   [http://localhost:8080](http://localhost:8080)
+   [http://localhost:8080/syspauta/swagger-ui.html](http://localhost:8080/syspauta/swagger-ui.html)
 
 ---
 
@@ -116,7 +151,8 @@ my.form.url=http://localhost:8080
 | Método | Endpoint                    | Descrição                |
 |--------|-----------------------------|--------------------------|
 | POST   | /api/v1/pauta/criar         | Cria uma nova pauta      |
-| GET    | /api/v1/pauta/teste         | Endpoint de teste        |
+| POST   | /api/v1/sessao/criar-sessao | Cria uma nova sessão     |
+| POST   | /api/v1/voto/votar          | Cria uma novo voto       |
 
 ### Exemplos de uso
 
@@ -145,19 +181,3 @@ Os testes estão localizados em:
 ```
 src/test/java/com/example/syspauta/syspauta/
 ```
-
----
-
-## :handshake: Como contribuir
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b minha-feature`)
-3. Commit suas alterações (`git commit -m 'feat: minha nova feature'`)
-4. Faça push para a branch (`git push origin minha-feature`)
-5. Abra um Pull Request
-
----
-
-## :page_facing_up: Licença
-
-Este projeto está sob a licença MIT. 
